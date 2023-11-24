@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= locals.title %></title>
+    <!-- Linking font awsome to use icon -->
+    <script
+      src="https://kit.fontawesome.com/acf3eaf7bf.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Linking Css File -->
+    <link rel="stylesheet" href="/css/home.css" />
+  </head>
+  <body>
+    <div class="PhoneBookHeading">
+      <h1><i class="fa-solid fa-address-book"></i> My Contact List</h1>
+    </div>
+    <div class="Contact_unordered_list">
+      <ul>
+        <% for(i of contact_list){ %>
+
+        <li>
+          <div class="list-item-container">
+            <h3><%= i.name %></h3>
+            <!-- <p><%= i.phoneNo %></p> -->
+            <p><%= i.phone %></p>
+          </div>
+          <div class="delete-button">
+            <!-- <a href="/delete-contact/?phone=<%= i.phoneNo %>" -->
+            <a href="/delete-contact/?id=<%= i._id %>"
+              ><i class="fa-regular fa-circle-xmark"></i
+            ></a>
+          </div>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+    <!-- Creation  -->
+    <form action="/create-post" method="post" class="input-form">
+      <input type="text" name="name" placeholder="Enter your name" required />
+      <input
+        type="number"
+        name="phoneNo"
+        placeholder="Enter your phoneNo"
+        required
+      />
+      <button type="submit">Add Contact</button>
+    </form>
+
+    <script type="text/javascript" src="/js/home.js"></script>
+  </body>
+</html>
